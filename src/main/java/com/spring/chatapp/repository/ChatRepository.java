@@ -9,7 +9,6 @@ public interface ChatRepository extends MongoRepository<ChatMessage, String> {
    //     @Query(value="{'id' : $0}", delete = true)
    //     void deleteById(String id);
 
-
         @Query(value = "{ 'postedBy' : ?0 }", delete = true)
         void  deleteByPostedBy(String postedBy);
 

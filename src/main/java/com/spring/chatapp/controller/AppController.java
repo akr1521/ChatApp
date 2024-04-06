@@ -8,10 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,14 +30,12 @@ private ChatAppService chatAppService;
              throw new InvalidMessageException(ErrorConstants.INVALID_REQUEST_ERROR_MESSAGE);
         }
         ChatMessage  persistedMessage =chatAppService.saveMessage(request);
-        System.out.println( persistedMessage);
         return new ResponseEntity<>(  persistedMessage, HttpStatus.CREATED);
     }
 
 
     @RequestMapping (value ="/message/all" ,method =  RequestMethod.GET ,produces = MediaType.APPLICATION_JSON_VALUE ,consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> getAllMessages ( ){
-        chatAppService.getAllChats().stream().forEach( System.out :: println);
         return new ResponseEntity<>( chatAppService.getAllChats() , HttpStatus.OK
         );
     }

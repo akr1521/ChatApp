@@ -33,12 +33,6 @@ public class SecurityConfig {
     @Autowired
     private ApplicationContext context;
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-
-        return new BCryptPasswordEncoder();
-
-    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {

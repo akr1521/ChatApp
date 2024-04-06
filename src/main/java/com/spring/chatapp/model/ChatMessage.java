@@ -6,11 +6,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Objects;
 
-
 @Document(collection = "chatMessage")
     public class ChatMessage {
-
-
     @Id
     private String id; // Unique identifier for the message (ObjectId from MongoDB)
     @JsonProperty("message")
