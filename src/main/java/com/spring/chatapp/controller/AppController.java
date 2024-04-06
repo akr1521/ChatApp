@@ -27,18 +27,6 @@ public class AppController {
 @Autowired
 private ChatAppService chatAppService;
 
-    @MessageMapping("/sendMessage")
-    @SendTo("/topic/chat")
-    public ChatMessage  doChat(@Payload ChatMessage chatMessage) {
-        return chatAppService.saveMessage(chatMessage);
-    }
-
-    @MessageMapping("/addUser")
-    @SendTo("/topic/chat")
-    public ChatMessage addUser(@Payload ChatMessage chatMessage, SimpMessageHeaderAccessor headerAccessor) {
-        headerAccessor.getSessionAttributes().put("username", chatMessage.getPostedBy());
-        return chatMessage;
-    }
 
     @RequestMapping (value="/message/send" , method= RequestMethod.POST , consumes = MediaType.ALL_VALUE)
     public ResponseEntity<ChatMessage>   sendMessage(@RequestBody ChatMessage request ) {
