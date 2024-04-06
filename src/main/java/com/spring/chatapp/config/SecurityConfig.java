@@ -42,6 +42,9 @@ public class SecurityConfig {
                 .build();
     }
 
+    /*
+    As per requirement , credentials are hardcoded
+     */
     @Bean
     public UserDetailsService userDetailsService() {
 

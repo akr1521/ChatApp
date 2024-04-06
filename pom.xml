@@ -12,7 +12,7 @@
 	<artifactId>chatapp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>chatapp</name>
-	<description>Chat Server for  acquaintances</description>
+	<description>a Simple Chat Server with REST api implmentation </description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

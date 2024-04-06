@@ -24,12 +24,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class ChatappApplicationTests {
 
 
-	@Test
-	void contextLoads() {
-	}
-
-
-
 	@Autowired
 	private AppController chatController;
 
@@ -43,14 +37,8 @@ class ChatappApplicationTests {
 		ChatMessage request = new ChatMessage();
 		request.setMessage("Hi There !!");
 		request.setPostedBy("Adriana");
-
-		// Mock ChatAppService behavior - simulate successful save
 		Mockito.when(chatAppService.saveMessage(request)).thenReturn(request);
-
-		// Perform the POST request with the message
 		ResponseEntity<ChatMessage> response = chatController.sendMessage(request);
-
-		// Assert response status and body
 		assertEquals(HttpStatus.CREATED, response.getStatusCode());
 		assertEquals(request, response.getBody());
 	}

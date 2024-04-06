@@ -6,14 +6,17 @@ This document provides an overview of the chat application, its setup instructio
 
 Features:
 
+Single Chat api that alllows all users to send messages.
 Stores chat messages using MongoDB.
 Provides Restful API endpoints for managing chat messages.
+There are no individual rooms, hence the rooms as a subject is not implemented in this context.
 
 Technologies:
 
 Spring Boot
-Spring Data MongoDB
-
+mongodb : as a NoSql database
+Maven: as build tool
+Mockito: for Unit tests
 
 
 Setup Instructions:
@@ -22,7 +25,8 @@ Prerequisites:
 
 Java 8+
 Maven
-MongoDB (local installation or hosted service)
+MongoDB (local installation )
+
 Configuration:
 
 Update application.properties file with your MongoDB connection details (host, port, database name).
@@ -45,10 +49,9 @@ API Endpoints:
 
 Replace <base-url> with http://localhost:9090/chatapp for local testing:
 
+Sent a message:  <base-url>/message/send - sends a chat message along with username.
 Get all messages: <base-url>/message/all (GET) - Retrieves all chat messages.
 Get messages by username: <base-url>/messages/user/{username} (GET) - Retrieves messages sent by a specific user (provide username in the path variable).
 Delete message by ID: <base-url>/message/{id} (DELETE) - Deletes a message by its ID (provide ID in the path variable).
 Delete last N messages: <base-url>/message/last/{number} (DELETE) - Deletes the specified number of last messages (provide the number in the path variable).
 
-Postman Collection:
-Postman collection for the api's is added to the code repo for testing.

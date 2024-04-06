@@ -66,13 +66,11 @@ public class ChatServiceTests {
             utilities.when(AppUtils::getTime).thenReturn(String.valueOf(currentTime));
 
         }
-    //    when(AppUtils.getTime()).thenReturn(String.valueOf(currentTime));
 
         ChatMessage savedMessage = chatAppService.saveMessage(message);
 
 
         assertEquals(AppUtils.getTime(), savedMessage.getPostedAt());
-        // Assert that the service calls the repository's save method with the message
         Mockito.verify(chatRepository , times(1)).save(message);
     }
 
